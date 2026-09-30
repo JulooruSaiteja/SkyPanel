@@ -1,0 +1,184 @@
+/* =========================================
+   APP ROOT
+   ========================================= */
+
+.App {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    padding-bottom: 60px;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+.appContent {
+    position: relative;
+    z-index: 10;
+
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 70px 24px 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 35px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   SEARCH AREA
+   ========================================= */
+
+.appContent > .SearchBox {
+    position: relative;
+    z-index: 20;
+
+    width: 100%;
+}
+
+
+/* =========================================
+   LOADING
+   ========================================= */
+
+.loadingSpinner {
+    position: relative;
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-top: 10px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    text-align: center;
+}
+
+.loadingSpinner p {
+    margin: 0;
+
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+
+    color: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================
+   SPINNER
+   ========================================= */
+
+.spinner {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    border: 3px solid rgba(255, 255, 255, 0.18);
+    border-top-color: rgba(255, 255, 255, 0.9);
+
+    animation: appSpinner 0.8s linear infinite;
+}
+
+@keyframes appSpinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   WEATHER CONTENT
+   ========================================= */
+
+.appContent > .InfoBox,
+.appContent > .Forecast {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+}
+
+
+/* =========================================
+   SMOOTH CONTENT APPEARANCE
+   ========================================= */
+
+.appContent > .InfoBox,
+.appContent > .Forecast {
+    animation: contentAppear 0.6s ease both;
+}
+
+@keyframes contentAppear {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .appContent {
+        padding: 45px 16px 70px;
+
+        gap: 25px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    .appContent {
+        padding: 35px 12px 60px;
+
+        gap: 22px;
+    }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .appContent > .InfoBox,
+    .appContent > .Forecast {
+        animation: none;
+    }
+
+    .spinner {
+        animation: none;
+    }
+}
