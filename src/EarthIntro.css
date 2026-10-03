@@ -1,0 +1,1047 @@
+/* =========================================
+   EARTH INTRO
+   PRE-SEARCH SKY PANEL BACKGROUND
+   ========================================= */
+
+.earthIntro {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #12213d 0%,
+            #080f20 42%,
+            #02050c 100%
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+
+/* =========================================
+   SPACE GLOW
+   ========================================= */
+
+.spaceGlow {
+    position: absolute;
+
+    width: 80vw;
+    height: 80vw;
+
+    max-width: 900px;
+    max-height: 900px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(40, 110, 200, 0.10) 0%,
+        rgba(30, 80, 160, 0.05) 40%,
+        transparent 70%
+    );
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   STARS
+   ========================================= */
+
+.earthStars {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(255,255,255,0.8) 0 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle at 30% 70%,
+            rgba(255,255,255,0.55) 0 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle at 72% 15%,
+            rgba(255,255,255,0.7) 0 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle at 90% 55%,
+            rgba(255,255,255,0.65) 0 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle at 60% 85%,
+            rgba(255,255,255,0.6) 0 1px,
+            transparent 2px
+        );
+
+    background-size:
+        260px 260px,
+        340px 340px,
+        420px 420px,
+        300px 300px,
+        500px 500px;
+
+    animation: starDrift 40s linear infinite;
+}
+
+
+/* =========================================
+   EARTH WRAPPER
+   ========================================= */
+
+.earthWrapper {
+    position: absolute;
+
+    /*
+       Horizontal center
+       Vertical position deliberately lower
+    */
+    left: 50%;
+    top: 58%;
+
+    width: 360px;
+    height: 360px;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   EARTH ATMOSPHERIC GLOW
+   ========================================= */
+
+.earthGlow {
+    position: absolute;
+
+    width: 410px;
+    height: 410px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(80, 170, 255, 0.18) 0%,
+        rgba(50, 130, 230, 0.10) 35%,
+        rgba(30, 100, 200, 0.04) 55%,
+        transparent 72%
+    );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================
+   EARTH
+   ========================================= */
+
+.earth {
+    position: relative;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    background-image:
+        url("https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg");
+
+    background-size: auto 100%;
+    background-position: 0 center;
+    background-repeat: repeat-x;
+
+    /*
+       IMPORTANT:
+       Earth itself is NOT blurred.
+    */
+    filter: none;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset -40px -20px 75px rgba(0, 0, 0, 0.68),
+        inset 20px 10px 35px rgba(255, 255, 255, 0.08),
+        0 0 18px rgba(80, 170, 255, 0.28),
+        0 0 45px rgba(60, 150, 255, 0.12);
+
+    animation: earthRotate 30s linear infinite;
+
+    z-index: 2;
+
+    will-change: background-position;
+}
+
+
+/* =========================================
+   EARTH ATMOSPHERE EDGE
+   ========================================= */
+
+.earth::before {
+    content: "";
+
+    position: absolute;
+    inset: -2px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(130, 210, 255, 0.38);
+
+    box-shadow:
+        0 0 10px rgba(100, 190, 255, 0.4),
+        0 0 25px rgba(70, 160, 255, 0.2);
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+
+/* =========================================
+   EARTH LIGHT / NIGHT SIDE
+   ========================================= */
+
+.earth::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse at 18% 25%,
+            transparent 0%,
+            rgba(0, 0, 0, 0.04) 30%,
+            rgba(0, 0, 0, 0.28) 60%,
+            rgba(0, 0, 0, 0.72) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+
+/* =========================================
+   EARTH ROTATION
+   ========================================= */
+
+@keyframes earthRotate {
+
+    from {
+        background-position: 0 center;
+    }
+
+    to {
+        background-position: 100% center;
+    }
+}
+
+
+/* =========================================
+   ORBITING LIGHT
+   ========================================= */
+
+.earthOrbitLight {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(190, 235, 255, 0.95);
+
+    box-shadow:
+        0 0 8px rgba(120, 210, 255, 0.9),
+        0 0 20px rgba(80, 170, 255, 0.55);
+
+    animation: orbitLight 8s linear infinite;
+
+    z-index: 6;
+}
+
+
+@keyframes orbitLight {
+
+    0% {
+        transform:
+            rotate(0deg)
+            translateX(190px)
+            rotate(0deg);
+    }
+
+    100% {
+        transform:
+            rotate(360deg)
+            translateX(190px)
+            rotate(-360deg);
+    }
+}
+
+
+/* =========================================
+   INTRO TEXT
+   ========================================= */
+
+.earthIntroContent {
+    position: absolute;
+
+    left: 50%;
+    bottom: 5%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+
+    text-align: center;
+
+    color: white;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+
+.earthIntroContent h1 {
+    margin: 0;
+
+    font-size: 2.4rem;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 2px 15px rgba(0, 0, 0, 0.7);
+}
+
+
+.earthIntroContent p {
+    margin: 10px 0 0;
+
+    font-size: 0.95rem;
+
+    letter-spacing: 2px;
+
+    opacity: 0.55;
+}
+
+
+/* =========================================
+   STAR ANIMATION
+   ========================================= */
+
+@keyframes starDrift {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-30px);
+    }
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .earthWrapper {
+        top: 60%;
+    }
+
+    .earth {
+        width: 290px;
+        height: 290px;
+    }
+
+    .earthGlow {
+        width: 370px;
+        height: 370px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .earthWrapper {
+        top: 62%;
+
+        width: 280px;
+        height: 280px;
+    }
+
+    .earth {
+        width: 245px;
+        height: 245px;
+    }
+
+    .earthGlow {
+        width: 315px;
+        height: 315px;
+    }
+
+    .earthIntroContent {
+        bottom: 4%;
+    }
+
+    .earthIntroContent h1 {
+        font-size: 1.7rem;
+        letter-spacing: 3px;
+    }
+
+    .earthIntroContent p {
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 400px) {
+
+    .earthWrapper {
+        top: 64%;
+    }
+
+    .earth {
+        width: 210px;
+        height: 210px;
+    }
+
+    .earthGlow {
+        width: 270px;
+        height: 270px;
+    }
+
+    .earthIntroContent h1 {
+        font-size: 1.35rem;
+    }
+
+    .earthIntroContent p {
+        font-size: 0.68rem;
+    }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .earth,
+    .earthOrbitLight,
+    .earthStars {
+        animation: none;
+    }
+}
+
+
+
+
+
+/* =========================================
+   EARTH INTRO
+   PRE-SEARCH WEATHER BACKGROUND
+   ========================================= */
+
+.earthIntro {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #14294b 0%,
+            #081225 42%,
+            #02050c 100%
+        );
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+/* =========================================
+   SPACE GRADIENT
+   ========================================= */
+
+.spaceGradient {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 65%,
+            rgba(30, 90, 160, 0.18),
+            transparent 55%
+        ),
+        linear-gradient(
+            180deg,
+            #02040b 0%,
+            #071225 55%,
+            #02050c 100%
+        );
+
+    z-index: 0;
+}
+
+
+/* =========================================
+   STARS CANVAS
+   ========================================= */
+
+.earthStars {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   DISTANT SPACE GLOW
+   ========================================= */
+
+.spaceGlow {
+    position: absolute;
+
+    left: 50%;
+    top: 55%;
+
+    width: 720px;
+    height: 720px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(40, 120, 220, 0.12) 0%,
+            rgba(30, 90, 180, 0.06) 35%,
+            transparent 70%
+        );
+
+    filter: blur(8px);
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   EARTH SCENE
+   ========================================= */
+
+.earthScene {
+    position: absolute;
+
+    left: 50%;
+    top: 64%;
+
+    width: 360px;
+    height: 360px;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   EARTH ATMOSPHERE
+   ========================================= */
+
+.earthAtmosphere {
+    position: absolute;
+
+    width: 390px;
+    height: 390px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 58%,
+            rgba(70, 170, 255, 0.12) 68%,
+            rgba(80, 190, 255, 0.08) 74%,
+            transparent 82%
+        );
+
+    box-shadow:
+        0 0 35px rgba(70, 170, 255, 0.16),
+        0 0 80px rgba(40, 120, 220, 0.08);
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   EARTH
+   ========================================= */
+
+.earth {
+    position: relative;
+
+    width: 320px;
+    height: 320px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background-image:
+        url("https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg");
+
+    background-size: auto 100%;
+    background-position: 0 center;
+    background-repeat: repeat-x;
+
+    animation: earthRotate 35s linear infinite;
+
+    box-shadow:
+        inset -45px -20px 75px rgba(0, 0, 0, 0.72),
+        inset 15px 10px 30px rgba(255, 255, 255, 0.08),
+        0 0 20px rgba(80, 180, 255, 0.35),
+        0 0 50px rgba(60, 150, 255, 0.18);
+
+    z-index: 2;
+
+    will-change: background-position;
+}
+
+
+/* =========================================
+   EARTH ATMOSPHERE EDGE
+   ========================================= */
+
+.earth::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(130, 215, 255, 0.45);
+
+    box-shadow:
+        0 0 10px rgba(100, 190, 255, 0.45),
+        0 0 25px rgba(70, 160, 255, 0.25);
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   EARTH DAY / NIGHT SHADING
+   ========================================= */
+
+.earthNight {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse at 18% 30%,
+            transparent 0%,
+            rgba(0, 0, 0, 0.05) 28%,
+            rgba(0, 0, 0, 0.30) 58%,
+            rgba(0, 0, 0, 0.78) 100%
+        );
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   MOVING CLOUDS
+   ========================================= */
+
+.earthClouds {
+    position: absolute;
+
+    inset: -5%;
+
+    width: 110%;
+    height: 110%;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 4;
+
+    mix-blend-mode: screen;
+}
+
+
+.earthCloudsBack {
+    background:
+        radial-gradient(
+            ellipse at 25% 35%,
+            rgba(255,255,255,0.25) 0%,
+            transparent 18%
+        ),
+        radial-gradient(
+            ellipse at 65% 55%,
+            rgba(255,255,255,0.18) 0%,
+            transparent 20%
+        ),
+        radial-gradient(
+            ellipse at 80% 25%,
+            rgba(255,255,255,0.20) 0%,
+            transparent 17%
+        );
+
+    background-size: 180% 100%;
+
+    animation:
+        cloudRotateBack 45s linear infinite;
+
+    opacity: 0.5;
+}
+
+
+.earthCloudsFront {
+    background:
+        radial-gradient(
+            ellipse at 15% 55%,
+            rgba(255,255,255,0.28) 0%,
+            transparent 16%
+        ),
+        radial-gradient(
+            ellipse at 50% 30%,
+            rgba(255,255,255,0.22) 0%,
+            transparent 18%
+        ),
+        radial-gradient(
+            ellipse at 85% 60%,
+            rgba(255,255,255,0.24) 0%,
+            transparent 17%
+        );
+
+    background-size: 200% 100%;
+
+    animation:
+        cloudRotateFront 28s linear infinite;
+
+    opacity: 0.6;
+}
+
+
+/* =========================================
+   EARTH ROTATION
+   ========================================= */
+
+@keyframes earthRotate {
+
+    0% {
+        background-position: 0 center;
+    }
+
+    100% {
+        background-position: 100% center;
+    }
+}
+
+
+@keyframes cloudRotateBack {
+
+    0% {
+        transform: translateX(-4%);
+    }
+
+    50% {
+        transform: translateX(4%);
+    }
+
+    100% {
+        transform: translateX(-4%);
+    }
+}
+
+
+@keyframes cloudRotateFront {
+
+    0% {
+        transform: translateX(5%);
+    }
+
+    50% {
+        transform: translateX(-5%);
+    }
+
+    100% {
+        transform: translateX(5%);
+    }
+}
+
+
+/* =========================================
+   OUTER EARTH GLOW
+   ========================================= */
+
+.earthOuterGlow {
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 55%,
+            rgba(80, 180, 255, 0.12) 65%,
+            rgba(70, 160, 255, 0.07) 72%,
+            transparent 82%
+        );
+
+    filter: blur(5px);
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   ORBIT LIGHT
+   ========================================= */
+
+.orbitLight {
+    position: absolute;
+
+    left: 50%;
+    top: 64%;
+
+    width: 8px;
+    height: 8px;
+
+    margin-left: -4px;
+    margin-top: -4px;
+
+    border-radius: 50%;
+
+    background: rgba(200, 240, 255, 0.95);
+
+    box-shadow:
+        0 0 8px rgba(130, 220, 255, 0.9),
+        0 0 20px rgba(80, 180, 255, 0.6);
+
+    z-index: 8;
+
+    animation: orbitLight 9s linear infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes orbitLight {
+
+    0% {
+        transform:
+            rotate(0deg)
+            translateX(190px)
+            rotate(0deg);
+    }
+
+    100% {
+        transform:
+            rotate(360deg)
+            translateX(190px)
+            rotate(-360deg);
+    }
+}
+
+
+/* =========================================
+   MOBILE / TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .earthScene {
+        top: 66%;
+
+        width: 330px;
+        height: 330px;
+    }
+
+    .earth {
+        width: 290px;
+        height: 290px;
+    }
+
+    .earthAtmosphere {
+        width: 355px;
+        height: 355px;
+    }
+
+    .earthOuterGlow {
+        width: 395px;
+        height: 395px;
+    }
+
+    .orbitLight {
+        top: 66%;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .earthScene {
+        top: 68%;
+
+        width: 290px;
+        height: 290px;
+    }
+
+    .earth {
+        width: 245px;
+        height: 245px;
+    }
+
+    .earthAtmosphere {
+        width: 305px;
+        height: 305px;
+    }
+
+    .earthOuterGlow {
+        width: 340px;
+        height: 340px;
+    }
+
+    .orbitLight {
+        top: 68%;
+    }
+
+    .spaceGlow {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .earthScene {
+        top: 70%;
+
+        width: 255px;
+        height: 255px;
+    }
+
+    .earth {
+        width: 210px;
+        height: 210px;
+    }
+
+    .earthAtmosphere {
+        width: 265px;
+        height: 265px;
+    }
+
+    .earthOuterGlow {
+        width: 295px;
+        height: 295px;
+    }
+
+    .orbitLight {
+        top: 70%;
+    }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .earth,
+    .earthClouds,
+    .orbitLight,
+    .earthStars {
+        animation: none;
+    }
+}
