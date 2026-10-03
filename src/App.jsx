@@ -16,8 +16,6 @@ function App() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Used to re-mount weather sections
-  // whenever a new city is successfully searched.
   const [searchVersion, setSearchVersion] = useState(0);
 
   const setData = useCallback((newData) => {
