@@ -1,76 +1,114 @@
 # 🌤️ SkyPanel — Weather Dashboard
 
-SkyPanel is a modern, responsive weather dashboard built with React and Vite. It provides current weather information, a five-day forecast, interactive charts, and an immersive interface featuring animated visual effects and a 3D Earth introduction.
+SkyPanel is a modern, responsive weather dashboard built with React and Vite. It allows users to search for cities, explore current weather conditions, view upcoming forecasts, and interact with weather data through charts and dynamic visual effects.
 
-## ✨ Features
+---
 
-- 🌍 **Interactive 3D Earth Intro** — An engaging introduction with Earth-inspired visuals.
-- 🔍 **City Weather Search** — Search for a city to view its weather conditions.
-- 🌡️ **Current Weather** — View temperature and other available weather information.
-- 📊 **Interactive Forecast Charts** — Explore forecast data using Recharts.
-- 🗓️ **Five-Day Forecast** — View forecasts at three-hour intervals.
-- 🌅 **Sunrise and Sunset** — Display sunrise and sunset times based on the city's timezone.
-- 🕒 **Timezone-Aware Local Time** — Show time information for the selected location.
-- 🎨 **Dynamic Weather Effects** — Weather-inspired backgrounds and visual effects.
-- 📱 **Responsive Design** — A glassmorphism-inspired interface designed for different screen sizes.
+## 📌 Overview
 
-## 🖼️ Screenshots
+The application allows users to:
 
-### SkyPanel Interface
+- Search for cities and view current weather conditions
+- Explore the upcoming 24-hour weather forecast at three-hour intervals
+- Visualize forecast data through interactive charts
+- View sunrise and sunset times for the selected location
+- Display local time based on the selected city's timezone
+- Experience animated weather backgrounds and an interactive 3D Earth introduction
 
-![SkyPanel Screenshot 1](SkyPanel_Images/SkyPanel1.png)
+---
 
-### Weather Dashboard
+## 📌 Features
 
-![SkyPanel Screenshot 2](SkyPanel_Images/SkyPanel4.png)
+- 🔍 **City Weather Search** — Search for a city to retrieve its weather information
+- 🌡️ **Current Weather Information** — View current temperature and available weather details
+- 🕒 **24-Hour Forecast** — Explore upcoming weather conditions at three-hour intervals
+- 📊 **Interactive Forecast Charts** — Visualize weather data using Recharts
+- 🌅 **Sunrise and Sunset Information** — Display sunrise and sunset times
+- 🕰️ **Timezone-Aware Local Time** — Display time information for the selected location
+- 🌍 **Interactive 3D Earth Intro** — Create an engaging introduction with Earth-inspired visuals
+- 🌦️ **Dynamic Weather Effects** — Weather-inspired backgrounds and animations
+- 📱 **Responsive UI** — Glassmorphism-inspired interface designed for different screen sizes
 
-### Forecast Visualization
-
-![SkyPanel Screenshot 3](SkyPanel_Images/SkyPanel5.png)
-
-### Weather Information
-
-![SkyPanel Screenshot 4](SkyPanel_Images/SkyPanel3.png)
-
-### Additional Interface View
-
-![SkyPanel Screenshot 5](SkyPanel_Images/SkyPanel2.png)
+---
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| React 19 | User interface and components |
-| JavaScript (ES6+) | Application logic |
-| CSS3 | Styling, animations, and responsive layouts |
-| Vite 8 | Development server and build tool |
-| Recharts | Interactive weather charts |
-| OpenWeather API | Current weather and forecast data |
-| ESLint | Code quality and linting |
+### Frontend
 
-## 🚀 Getting Started
+- React 19
+- JavaScript (ES6+)
+- CSS3
+- Recharts
 
-Follow these steps to run SkyPanel locally.
+### Development Tools
 
-### Prerequisites
+- Vite 8
+- ESLint
+- npm
 
-- Node.js and npm
-- An OpenWeather API key
+### API & Services
 
-### 1. Clone the repository
+- OpenWeather API — Current weather and forecast data
+
+---
+
+## 📸 Screenshots
+
+### 🌍 SkyPanel Interface
+
+[SkyPanel Interface](SkyPanel_Images/SkyPanel1.png) ([image](SkyPanel_Images/SkyPanel1.png))
+
+### 🌤️ Weather Dashboard
+
+[Weather Dashboard](SkyPanel_Images/SkyPanel4.png) ([image](SkyPanel_Images/SkyPanel4.png))
+
+### 📊 Forecast Visualization
+
+[Forecast Visualization](SkyPanel_Images/SkyPanel5.png) ([image](SkyPanel_Images/SkyPanel5.png))
+
+### 🌡️ Weather Information
+
+[Weather Information](SkyPanel_Images/SkyPanel3.png) ([image](SkyPanel_Images/SkyPanel3.png))
+
+### ✨ Additional Interface View
+
+[Additional View](SkyPanel_Images/SkyPanel2.png) ([image](SkyPanel_Images/SkyPanel2.png))
+
+---
+
+## ⚙️ Installation
 
 ```bash
+# Clone the repository
 git clone https://github.com/JulooruSaiteja/SkyPanel.git
+
+# Navigate to the project directory
 cd SkyPanel
+
+# Install dependencies
+npm install
+
+# Configure your OpenWeather API key in the .env file
+
+# Start the development server
+npm run dev
 ```
 
-### 2. Install dependencies
+Open the local URL displayed in your terminal to access the application.
+
+### Production Build
 
 ```bash
-npm install
+# Create an optimized production build
+npm run build
+
+# Preview the production build locally
+npm run preview
 ```
 
-### 3. Configure the API key
+---
+
+## 🔐 Environment Variables
 
 Create a `.env` file in the project root and add your OpenWeather API key:
 
@@ -78,92 +116,64 @@ Create a `.env` file in the project root and add your OpenWeather API key:
 VITE_OPENWEATHER_API_KEY=your_openweather_api_key
 ```
 
-Replace `your_openweather_api_key` with your actual API key.
+Get your API key from [OpenWeather](https://openweathermap.org/api).
 
-You can obtain an API key from [OpenWeather](https://openweathermap.org/api).
+**Important:** Keep your `.env` file out of version control. Ensure it is listed in `.gitignore`. Variables prefixed with `VITE_` are exposed to client-side code, so the API key should not be treated as a secret.
 
-**Important:** Never commit your real `.env` file or expose your API key in public source code. Ensure `.env` is included in `.gitignore`. The `VITE_` prefix makes the variable available to client-side code, so it should not be treated as a secret suitable for privileged API access.
-
-### 4. Start the development server
-
-```bash
-npm run dev
-```
-
-Open the local URL printed in your terminal to view the application.
-
-## 📦 Production Build
-
-Create an optimized production build:
-
-```bash
-npm run build
-```
-
-Preview the production build locally:
-
-```bash
-npm run preview
-```
-
-## 🌐 API Integration
-
-SkyPanel uses the OpenWeather API to retrieve weather information.
-
-| Endpoint | Purpose |
-|---|---|
-| [Current Weather API](https://openweathermap.org/current) | Retrieves current weather conditions |
-| [5 Day / 3 Hour Forecast API](https://openweathermap.org/forecast5) | Retrieves forecast data at three-hour intervals |
-
-The application uses the metric unit system for temperature where configured.
+---
 
 ## 📁 Project Structure
 
 ```text
-SkyPanel/
-├── SkyPanel_Images/
-│   ├── SkyPanel1.png
-│   ├── SkyPanel2.png
-│   ├── SkyPanel3.png
-│   ├── SkyPanel4.png
-│   └── SkyPanel5.png
-├── src/
-│   ├── App.jsx
-│   ├── App.css
-│   ├── EarthIntro.jsx
-│   ├── EarthIntro.css
-│   ├── Forecast.jsx
-│   ├── Forecast.css
-│   ├── HeaderDecoration.jsx
-│   ├── HeaderDecoration.css
-│   ├── InfoBox.jsx
-│   ├── InfoBox.css
-│   ├── SearchBox.jsx
-│   ├── SearchBox.css
-│   ├── WeatherBackground.jsx
-│   ├── WeatherBackground.css
-│   ├── timeUtils.js
-│   ├── index.css
-│   └── main.jsx
-├── .env.example
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package.json
-├── package-lock.json
-├── vite.config.js
-└── README.md
+📦 SkyPanel
+├── 📁 SkyPanel_Images/          # Project screenshots
+│   ├── 📄 SkyPanel1.png
+│   ├── 📄 SkyPanel2.png
+│   ├── 📄 SkyPanel3.png
+│   ├── 📄 SkyPanel4.png
+│   └── 📄 SkyPanel5.png
+├── 📁 src/                      # React application source
+│   ├── 📄 App.jsx                # Main application component
+│   ├── 📄 App.css                # Main application styles
+│   ├── 📄 EarthIntro.jsx         # 3D Earth introduction
+│   ├── 📄 EarthIntro.css
+│   ├── 📄 Forecast.jsx           # Forecast visualization
+│   ├── 📄 Forecast.css
+│   ├── 📄 HeaderDecoration.jsx   # Header decoration component
+│   ├── 📄 HeaderDecoration.css
+│   ├── 📄 InfoBox.jsx             # Weather information component
+│   ├── 📄 InfoBox.css
+│   ├── 📄 SearchBox.jsx           # City search component
+│   ├── 📄 SearchBox.css
+│   ├── 📄 WeatherBackground.jsx  # Dynamic weather backgrounds
+│   ├── 📄 WeatherBackground.css
+│   ├── 📄 timeUtils.js            # Time-related utilities
+│   ├── 📄 index.css               # Global styles
+│   └── 📄 main.jsx                # Application entry point
+├── 📄 .env.example                # Example environment configuration
+├── 📄 .gitignore                  # Git ignored files
+├── 📄 eslint.config.js            # ESLint configuration
+├── 📄 index.html                  # HTML entry point
+├── 📄 package.json                # Dependencies and npm scripts
+├── 📄 package-lock.json           # Locked dependency versions
+├── 📄 vite.config.js              # Vite configuration
+└── 📄 README.md                   # Project documentation
 ```
 
-## 🔮 Future Improvements
+---
 
-- 📍 Weather based on the user's current location
-- 🌡️ Celsius and Fahrenheit temperature toggle
-- ⭐ Favorite cities
-- 🌫️ Air Quality Index (AQI) information
-- ☀️ UV index information
+## 📌 Future Improvements
 
-## 👨‍💻 Author
+- 📅 **Five-Day Weather Forecast** — Extend the forecast interface to display weather predictions for the next five days
+- 📍 **Geolocation Support** — Automatically retrieve weather for the user's current location
+- 🌡️ **Temperature Unit Toggle** — Switch between Celsius and Fahrenheit
+- ⭐ **Favorite Cities** — Save and quickly access frequently searched cities
+- 🌫️ **Air Quality Index (AQI)** — Display air quality information
+- ☀️ **UV Index** — Provide ultraviolet index information
+
+---
+
+## 👤 Author
 
 **Julooru Saiteja**
 
