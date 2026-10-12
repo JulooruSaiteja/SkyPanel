@@ -10,6 +10,7 @@ import {
 } from "recharts";
 
 import { toCity, shortTime } from "./timeUtils.js";
+import { convertTemp } from "./tempUtils.js";
 import "./Forecast.css";
 
 
@@ -18,7 +19,7 @@ import "./Forecast.css";
 // CUSTOM TOOLTIP
 // =================================
 
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload, label, unit = "C" }) => {
 
   if (active && payload && payload.length) {
 
@@ -30,7 +31,7 @@ const CustomTooltip = ({ active, payload, label }) => {
         </p>
 
         <p className="tooltipTemp">
-          {payload[0].value}°C
+          {payload[0].value}°{unit}
         </p>
 
         <p className="tooltipCondition">
@@ -51,7 +52,8 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 export default function Forecast({
   forecast,
-  timezoneOffset = 0
+  timezoneOffset = 0,
+  unit = "C"
 }) {
 
   const [isMobile, setIsMobile] = useState(false);
@@ -105,7 +107,7 @@ export default function Forecast({
   // =================================
 
   const temps = next24Hours.map((item) =>
-    item?.main?.temp != null ? Math.round(item.main.temp) : 0
+    item?.main?.temp != null ? convertTemp(item.main.temp, unit) : 0
   );
 
   const maxTemp = temps.length ? Math.max(...temps) : 0;
@@ -144,7 +146,7 @@ export default function Forecast({
       ),
 
       temp: item?.main?.temp != null
-        ? Math.round(item.main.temp)
+        ? convertTemp(item.main.temp, unit)
         : 0,
 
       condition:
@@ -195,7 +197,7 @@ export default function Forecast({
           <div className="highLowBadge">
 
             <span className="highLabel">
-              HIGH {maxTemp}°C
+              HIGH {maxTemp}°{unit}
             </span>
 
             <span className="badgeSeparator">
@@ -203,7 +205,7 @@ export default function Forecast({
             </span>
 
             <span className="lowLabel">
-              LOW {minTemp}°C
+              LOW {minTemp}°{unit}
             </span>
 
           </div>
@@ -258,7 +260,7 @@ export default function Forecast({
 
                 <Tooltip
                   content={
-                    <CustomTooltip />
+                    <CustomTooltip unit={unit} />
                   }
                   cursor={{
                     stroke:
@@ -318,7 +320,7 @@ export default function Forecast({
 
                 const temperature =
                   item?.main?.temp != null
-                    ? Math.round(item.main.temp)
+                    ? convertTemp(item.main.temp, unit)
                     : 0;
 
 
@@ -377,7 +379,7 @@ export default function Forecast({
 
 
                     <h3>
-                      {temperature}°C
+                      {temperature}°{unit}
                     </h3>
 
 

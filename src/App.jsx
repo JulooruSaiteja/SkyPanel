@@ -6,7 +6,7 @@ import Forecast from "./Forecast.jsx";
 import WeatherBackground from "./WeatherBackground.jsx";
 import HeaderDecoration from "./HeaderDecoration.jsx";
 import EarthIntro from "./EarthIntro.jsx";
-
+import UnitToggle from "./UnitToggle.jsx";
 
 import "./App.css";
 
@@ -17,6 +17,24 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const [searchVersion, setSearchVersion] = useState(0);
+
+  const [unit, setUnit] = useState(() => {
+    try {
+      const saved = localStorage.getItem("skypanel_unit");
+      return saved === "F" ? "F" : "C";
+    } catch {
+      return "C";
+    }
+  });
+
+  const handleUnitToggle = useCallback((newUnit) => {
+    setUnit(newUnit);
+    try {
+      localStorage.setItem("skypanel_unit", newUnit);
+    } catch {
+      // Ignore storage errors in restricted contexts
+    }
+  }, []);
 
   const setData = useCallback((newData) => {
     setDataRaw(newData);
@@ -41,8 +59,10 @@ function App() {
 
 
       {/* =================================
-          HEADER DECORATION
+          HEADER DECORATION & CONTROLS
           ================================= */}
+
+      <UnitToggle unit={unit} onToggle={handleUnitToggle} />
 
       <HeaderDecoration data={data} />
 
@@ -95,6 +115,8 @@ function App() {
           <InfoBox
             key={`info-${searchVersion}`}
             data={data}
+            unit={unit}
+            onToggleUnit={handleUnitToggle}
           />
         )}
 
@@ -108,6 +130,7 @@ function App() {
             key={`forecast-${searchVersion}`}
             forecast={forecast}
             timezoneOffset={data?.timezone ?? 0}
+            unit={unit}
           />
         )}
 
