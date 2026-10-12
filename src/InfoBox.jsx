@@ -1,4 +1,5 @@
 import { toCity, formatCityTime } from "./timeUtils.js";
+import { convertTemp } from "./tempUtils.js";
 import "./InfoBox.css";
 
 // =================================
@@ -19,7 +20,7 @@ function windDirection(deg) {
 // COMPONENT
 // =================================
 
-export default function InfoBox({ data }) {
+export default function InfoBox({ data, unit = "C", onToggleUnit }) {
 
   // Prevent rendering if data is unavailable
   if (!data) return null;
@@ -64,19 +65,19 @@ export default function InfoBox({ data }) {
     : "—";
 
   const tempDisplay = typeof data.main?.temp === "number"
-    ? Math.round(data.main.temp)
+    ? convertTemp(data.main.temp, unit)
     : "—";
 
   const feelsLikeDisplay = typeof data.main?.feels_like === "number"
-    ? Math.round(data.main.feels_like)
+    ? convertTemp(data.main.feels_like, unit)
     : "—";
 
   const minTempDisplay = typeof data.main?.temp_min === "number"
-    ? Math.round(data.main.temp_min)
+    ? convertTemp(data.main.temp_min, unit)
     : "—";
 
   const maxTempDisplay = typeof data.main?.temp_max === "number"
-    ? Math.round(data.main.temp_max)
+    ? convertTemp(data.main.temp_max, unit)
     : "—";
 
   const latDisplay = typeof data.coord?.lat === "number"
@@ -114,7 +115,7 @@ export default function InfoBox({ data }) {
         )}
 
         <span>
-          {weather.main ?? "—"} · {tempDisplay}°C
+          {weather.main ?? "—"} · {tempDisplay !== "—" ? `${tempDisplay}°${unit}` : "—"}
         </span>
 
       </div>
@@ -126,8 +127,21 @@ export default function InfoBox({ data }) {
 
       <div className="mainWeatherCard">
 
-        <div className="mainTemperature">
-          {tempDisplay}°C
+        <div
+          className="mainTemperature clickableTemp"
+          onClick={() => onToggleUnit?.(unit === "C" ? "F" : "C")}
+          title={`Click to switch to °${unit === "C" ? "F" : "C"}`}
+          role="button"
+          tabIndex={0}
+          aria-label={`Temperature ${tempDisplay} degrees ${unit === "C" ? "Celsius" : "Fahrenheit"}. Click to switch unit.`}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onToggleUnit?.(unit === "C" ? "F" : "C");
+            }
+          }}
+        >
+          {tempDisplay !== "—" ? `${tempDisplay}°${unit}` : "—"}
         </div>
 
         <h3>
@@ -139,17 +153,17 @@ export default function InfoBox({ data }) {
         </p>
 
         <p>
-          Feels like {feelsLikeDisplay}°C
+          Feels like {feelsLikeDisplay !== "—" ? `${feelsLikeDisplay}°${unit}` : "—"}
         </p>
 
         <div className="minMax">
 
           <span>
-            Min {minTempDisplay}°C
+            Min {minTempDisplay !== "—" ? `${minTempDisplay}°${unit}` : "—"}
           </span>
 
           <span>
-            Max {maxTempDisplay}°C
+            Max {maxTempDisplay !== "—" ? `${maxTempDisplay}°${unit}` : "—"}
           </span>
 
         </div>

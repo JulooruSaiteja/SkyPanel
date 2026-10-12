@@ -76,6 +76,23 @@
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+.mainTemperature.clickableTemp {
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), text-shadow 0.2s ease;
+    display: inline-block;
+}
+
+.mainTemperature.clickableTemp:hover {
+    transform: scale(1.03);
+    text-shadow: 0 4px 25px rgba(255, 255, 255, 0.35);
+}
+
+.mainTemperature.clickableTemp:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 4px;
+    border-radius: 12px;
+}
+
 .mainWeatherCard h3 {
     margin: 0 0 5px;
     font-size: 1.8rem;
