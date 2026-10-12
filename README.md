@@ -21,6 +21,7 @@ The application allows users to:
 
 - 🔍 **City Weather Search** — Search for a city to retrieve its weather information.
 - 🌡️ **Current Weather Information** — View current temperature and available weather details.
+- 🔄 **Temperature Unit Toggle** — Seamlessly switch between Celsius (°C) and Fahrenheit (°F) with persistent preference saving.
 - 🕒 **24-Hour Forecast** — Explore upcoming weather conditions at three-hour intervals.
 - 📊 **Interactive Forecast Charts** — Visualize weather data using Recharts.
 - 🌅 **Sunrise and Sunset Information** — Display sunrise and sunset times.
@@ -167,8 +168,11 @@ Get your API key from [OpenWeather](https://openweathermap.org/api).
 │   ├── 📄 InfoBox.css
 │   ├── 📄 SearchBox.jsx          # City search component
 │   ├── 📄 SearchBox.css
+│   ├── 📄 UnitToggle.jsx         # Temperature unit control component
+│   ├── 📄 UnitToggle.css
 │   ├── 📄 WeatherBackground.jsx  # Dynamic weather backgrounds
 │   ├── 📄 WeatherBackground.css
+│   ├── 📄 tempUtils.js           # Temperature conversion utilities
 │   ├── 📄 timeUtils.js           # Time-related utilities
 │   ├── 📄 index.css              # Global styles
 │   └── 📄 main.jsx               # Application entry point
@@ -188,7 +192,6 @@ Get your API key from [OpenWeather](https://openweathermap.org/api).
 
 - 📅 **Five-Day Weather Forecast** — Extend the forecast interface to display weather predictions for the next five days.
 - 📍 **Geolocation Support** — Retrieve weather for the user's current location.
-- 🌡️ **Temperature Unit Toggle** — Switch between Celsius and Fahrenheit.
 - ⭐ **Favorite Cities** — Save and quickly access frequently searched cities.
 - 🌫️ **Air Quality Index (AQI)** — Display air quality information.
 - ☀️ **UV Index** — Provide ultraviolet index information.
