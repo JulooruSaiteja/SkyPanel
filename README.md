@@ -1,5 +1,7 @@
 # 🌤️ SkyPanel — Weather Dashboard
 
+[Live Demo](https://skypanel-ashy.vercel.app/)
+
 SkyPanel is a modern, responsive weather dashboard built with React and Vite. It allows users to search for cities, explore current weather conditions, view upcoming forecasts, and interact with weather data through charts and dynamic visual effects.
 
 ---
